@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>菜单按钮的显示取消</title>
+    <style>
+        html{font-size:16px;}
+        *{margin:0;padding:0;}
+        .menu-icon{
+            font-size:1rem;
+            width:2em;
+            height: 29px;
+            display: inline-block;
+            position: relative;
+        }
+        .menu-icon span{
+            display: block;
+            width:100%;
+            height:3px;
+            background:#000;
+            -webkit-transition: all .3s linear;
+            position: absolute;
+        }
+        .menu-icon .one{top:0;}
+        .menu-icon .two{top:13px;}
+        .menu-icon .three{top:26px;}
+        .menu-icon-active span+span{margin-top:0;}
+        .menu-icon-active .one{
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            position: absolute;
+            left:0;
+            top:13px;
+        }
+        .menu-icon-active .three{
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            position: absolute;
+            right:0;
+            top:13px;
+        }
+        .menu-icon-active .two{
+            background: transparent;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var icon = document.getElementsByClassName('menu-icon')[0];
+            console.log(icon)
+            icon.onclick = function() {
+                var icon_active = document.getElementsByClassName('menu-icon-active')[0];
+                if(!icon_active){
+                    this.classList.add('menu-icon-active')
+                }else{
+                    this.classList.remove('menu-icon-active')
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="menu-icon">
+        <span class="one"></span>
+        <span class="two"></span>
+        <span class="three"></span>
+    </div>
+</body>
+</html>
